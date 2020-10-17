@@ -1,11 +1,19 @@
+let humanSelection = ""
 let computerWins = 0;
 let humanWins = 0;
-let numOfGames = prompt("Welcome to Rock Paper Scissors.  How many games would you like to play?");
-if (isNaN(numOfGames)) {
-    console.log("invalid input.  Please enter a number");
-    } else {
-        numOfGames = parseInt(numOfGames);
-    }
+let gameNum = 0;
+
+const scoreboard = document.querySelector('#scoreboard');
+const announce = document.querySelector('#announce');
+
+const rockbtn = document.querySelector('#rock');
+const paperbtn = document.querySelector('#paper');
+const scissorsbtn = document.querySelector('#scissors');
+
+//let numOfGames = function() {
+//    gameNum = prompt("Welcome to Rock Paper Scissors.  How many games would you like to play?");
+//}
+//numOfGames();
 
 let computerPlay = function() {
    let computerSelection = "";
@@ -22,7 +30,6 @@ let computerPlay = function() {
 }
 
 let humanPlay = function() {
-    let humanSelection = prompt("Rock paper or scissors?");
     humanSelection = humanSelection.toLowerCase();
     return humanSelection;
 }
@@ -33,11 +40,11 @@ let score = function(winner) {
     }else if (winner === " Human wins!") {
         humanWins +=1;
     }
+    scoreboard.textContent = humanWins + "   -   " + computerWins;
     console.log("Human has " + humanWins + " wins and Computer has " + computerWins + " wins.");
 }
 
 let game = function() {
-    for (i=0; i < numOfGames; i++) {
         
         let humanMove = humanPlay();
         let computerMove = computerPlay();
@@ -59,9 +66,29 @@ let game = function() {
         }else {
             console.log("if statement error")
         }
-    console.log("Human plays " + humanMove + " and Computer plays " + computerMove + "." + winner);
         score(winner);
-
-    }
+        announce.textContent = "Human plays " + humanMove + " and Computer plays " + computerMove + "." + winner;
+        
  }
-game(); 
+
+rockbtn.addEventListener('click', () => {
+    humanSelection = 'rock';
+    game();
+})
+
+paperbtn.addEventListener('click', () => {
+    humanSelection = 'paper';
+    game();
+})
+
+scissorsbtn.addEventListener('click', () => {
+    humanSelection = 'scissors';
+    game();
+})
+
+
+
+
+
+ 
+
