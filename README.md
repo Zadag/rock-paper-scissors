@@ -1,3 +1,3 @@
 # rock-paper-scissors
 
-A simple rock paper scissors game to be played through the console.  Built using javascript.  
+A simple rock paper scissors game played against a computer.  
